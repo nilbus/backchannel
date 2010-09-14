@@ -1,2 +1,31 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<%= link_to_function 'Add Post', '', :id => 'add_post' if logged_in? %>
+<div class="new_post_fields" style="display: none;">
+  <% form_for @post do |f| %>
+    <%= f.text_area :content %><br>
+    <%= f.submit 'Post' %>
+  <% end %>
+</div>
+<% @posts.each do |post| %>
+  <div class="post">
+    <div class="user">
+      <%=h post.user.try :name %>
+    </div>
+    <div class="content">
+      <%=h post.content %>
+    </div>
+    <div class="replies">
+      <% post.replies.each do |reply| %>
+        <div class="reply">
+          <div class="user">
+            <%=h reply.user.try :name %>
+          </div>
+          <div class="content">
+            <%=h reply.content %>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to_function 'Reply', '' if logged_in? %>
+      <%= link_to 'Delete', post_path(post), :method => :delete, :confirm => "Delete post?" if current_user.try :admin %>
+    </div>
+  </div>
+<% end %>

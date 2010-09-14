@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users
   map.resource :session
-  map.resources :posts
+  map.resources :posts, :members => { :search => :get }
   map.resources :replies
   map.root :controller => 'posts', :action => 'index'
 end

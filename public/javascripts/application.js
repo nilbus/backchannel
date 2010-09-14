@@ -1,2 +1,12 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function() {
+  var add_post = $('#add_post');
+  add_post.click(function() {
+    add_post.slideUp('fast');
+    var template = add_post.next('.new_post_fields');
+    var clone = template.clone();
+    clone.insertAfter(template);
+    clone.slideDown('fast');
+    clone.find('textarea').first().get()[0].focus();
+  });
+});
+
