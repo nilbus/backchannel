@@ -1,0 +1,12 @@
+<html>
+<head>
+  <title>Backchannel</title>
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
+  <%= javascript_include_tag 'jquery-1.4.2.min', 'application' %>
+</head>
+<body>
+  <%= render 'users/user_bar' %>
+  <h2><a href='/'>Backchannel</a></h2>
+  <%= yield %>
+</body>
+</html>
