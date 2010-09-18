@@ -21,15 +21,18 @@ h1 { font-size: 20px; }
 h2 { font-size: 26px; }
 h2 a { text-decoration: none; }
 
-textarea {
-  height: 4em;
-  width: 520px;
+input[type=text] {
+  width: 500px;
 }
 
 #user-bar-greeting, #user-bar-action {
   display: block;
   float: right;
   margin-left: 15px;
+}
+
+.column {
+  float: left;
 }
 
 .post {
@@ -48,7 +51,7 @@ textarea {
   margin: 2px 5px -2px 0;
 }
 
-.post a {
+.post a, a.reply_link {
   clear: both;
   display: block;
   font-size: 80%;
@@ -59,5 +62,17 @@ textarea {
 
 a#add_post {
   display: block;
-  margin-left: 226px;
+}
+
+.reply {
+  margin-left: 20px;
+  width: 480px;
+}
+
+.search {
+  padding: 10px;
+}
+
+.search input {
+  width: 250px;
 }

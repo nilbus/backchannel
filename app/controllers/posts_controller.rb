@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.roots
-    @post = Post.new
   end
 
   def create
@@ -19,7 +18,8 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.searchlogic
+    @posts = Post.all :conditions => ['content like ?', "%#{params[:search]}%"]
+    render :index
   end
 
 end
