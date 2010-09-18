@@ -51,7 +51,7 @@ input[type=text] {
   margin: 2px 5px -2px 0;
 }
 
-.post a, a.reply_link {
+.post>a, a.reply_link {
   clear: both;
   display: block;
   font-size: 80%;
@@ -67,6 +67,22 @@ a#add_post {
 .reply {
   margin-left: 20px;
   width: 480px;
+}
+
+.cheer {
+  text-align: center;
+  margin: 5px 5px 0 0;
+  float: right;
+}
+
+.cheer .cheered {
+  color: yellow;
+}
+
+.cheer img {
+  border: 0;
+  height: 1em;
+  width: 1em;
 }
 
 .search {

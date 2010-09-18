@@ -7,8 +7,13 @@
         </div>
         <div class="content">
           <%=h post.content %>
+          <div class="cheer">
+            <%= link_to_function image_tag('heart.svg'), 'cheer(this)' %>
+            <br>
+            (<span class="cheer-count<%= ' cheered' if post.cheered_by?(current_user) %>"><%= post.cheers.count %></span>)
+          </div>
         </div>
-        <%= link_to_function 'Reply', 'reply($(this))' if logged_in? %>
+        <%= link_to_function 'Reply', 'reply(this)' if logged_in? %>
         <div class="new_post_fields" style="display: none;">
           <% form_for Post.new do |f| %>
             <%= f.text_field :content %>
@@ -39,6 +44,12 @@
   <% else %>
     <div class="search">
       <strong>No Posts</strong>
+      <%= link_to_function 'Reply', 'reply($(this))', :id => 'add_post', :class => 'reply_link' if logged_in? %>
+      <div class="new_post_fields" style="display: none;">
+        <% form_for Post.new do |f| %>
+          <%= f.text_field :content %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
