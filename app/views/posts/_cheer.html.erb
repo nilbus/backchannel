@@ -1,4 +1,4 @@
 <div class="cheer">
-  <span class="cheer-counter <%= 'cheered' if post.cheered_by?(current_user) %>"><%= post.cheers.count %></span>
+  <span class="cheer-counter <%= 'cheered' if post.cheered_by?(current_user) %>"><%= post.cheers.size %></span>
   <%= link_to_function image_tag('heart.svg'), 'cheer(this)', :title => 'cheer this post' %>
 </div>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.roots
+    @posts = Post.roots.newest_first.with_cheers
   end
 
   def create
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.all :conditions => ['content like ?', "%#{params[:search]}%"]
+    @posts = Post.newest_first.with_cheers.all :conditions => ['content like ?', "%#{params[:search]}%"]
     @searching = true
     render :index
   end

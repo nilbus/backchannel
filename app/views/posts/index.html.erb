@@ -1,5 +1,13 @@
-<div class="column">
-  <% if @posts.any? %>
+<% if @posts.any? %>
+
+  <div class="column">
+    <%= link_to_function 'Reply', 'reply($(this))', :id => 'add_post', :class => 'reply_link' if logged_in? %>
+    <div class="new_post_fields" style="display: none;">
+      <% form_for Post.new do |f| %>
+        <%= f.text_field :content %>
+      <% end %>
+    </div>
+
     <% @posts.each do |post| %>
       <div class="post" id="<%= post.id %>">
         <div class="user">
@@ -34,13 +42,20 @@
         <% end %>
       </div>
     <% end %>
-    <%= link_to_function 'Reply', 'reply($(this))', :id => 'add_post', :class => 'reply_link' if logged_in? %>
-    <div class="new_post_fields" style="display: none;">
-      <% form_for Post.new do |f| %>
-        <%= f.text_field :content %>
+  </div><!-- /column -->
+
+  <div class="column">
+    <div class="search">
+      <strong>Search</strong><br>
+      <% form_tag search_posts_path, :method => :get do |f| %>
+        <%= text_field_tag :search %>
       <% end %>
     </div>
-  <% else %>
+  </div>
+
+<% else %>
+
+  <div class="column">
     <div class="search">
       <strong>No Posts</strong>
       <%= link_to_function 'Reply', 'reply($(this))', :id => 'add_post', :class => 'reply_link' if logged_in? %>
@@ -50,14 +65,6 @@
         <% end %>
       </div>
     </div>
-  <% end %>
-</div>
-
-<div class="column">
-  <div class="search">
-    <strong>Search</strong><br>
-    <% form_tag search_posts_path, :method => :get do |f| %>
-      <%= text_field_tag :search %>
-    <% end %>
   </div>
-</div>
+
+<% end %>
