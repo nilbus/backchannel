@@ -24,7 +24,7 @@
             <%= f.hidden_field :parent_id, :value => post.id %>
           <% end %>
         </div>
-        <%= link_to 'Delete', post_path(post), :method => :delete, :confirm => "Delete post?" if current_user.try :admin %>
+        <%= link_to 'Delete', post_path(post), :method => :delete, :confirm => "Delete post?" if current_user.try :is_admin? %>
       </div>
       <div class="replies">
         <% unless @searching %>
@@ -68,5 +68,11 @@
         <%= text_field_tag :search %>
       <% end %>
     </div>
+  </div>
+<% end %>
+
+<% if current_user.try :is_admin? %>
+  <div class="column">
+    <strong>User Administration</strong><br>
   </div>
 <% end %>

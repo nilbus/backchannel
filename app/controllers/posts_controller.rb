@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy if current_user.try :admin
+    Post.find(params[:id]).destroy if current_user.try :is_admin?
 
     redirect_to posts_path
   end
