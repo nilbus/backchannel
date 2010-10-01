@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.all :conditions => ['content like ?', "%#{params[:search]}%"]
+    @searching = true
     render :index
   end
 
