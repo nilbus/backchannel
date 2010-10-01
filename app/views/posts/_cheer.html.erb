@@ -1,6 +1,6 @@
 <div class="cheer">
   <span class="cheer-counter <%= 'cheered' if logged_in? && post.cheered_by?(current_user) %>"><%= post.cheers.size %></span>
-  <% if logged_in? %>
+  <% if logged_in? and current_user.id != post.user_id %>
     <%= link_to_function image_tag('heart.svg'), 'cheer(this)', :title => 'cheer this post' %>
   <% else %>
     <%= image_tag('heart.svg') %>

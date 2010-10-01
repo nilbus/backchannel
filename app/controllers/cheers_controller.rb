@@ -12,6 +12,9 @@ class CheersController < ApplicationController
     # make sure they haven't cheered it already
     return unless Cheer.first(:conditions => {:user_id => current_user.id, :post_id => params[:post_id]}).nil?
 
+    # make sure they aren't cheering their own post
+    return unless Post.first(:conditions => {:id => params[:post_id], :user_id => current_user.id}).nil?
+
     # cheer the post
     Cheer.create :post_id => params[:post_id], :user_id => current_user.id
   end
