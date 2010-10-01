@@ -15,7 +15,7 @@
         </div>
         <div class="content">
           <%=h post.content %>
-          <%= render 'cheer', :post => post if logged_in? %>
+          <%= render 'cheer', :post => post %>
         </div>
         <%= link_to_function 'Reply', 'reply(this)' unless !logged_in? or @searching %>
         <div class="new_post_fields" style="display: none;">
@@ -35,7 +35,7 @@
               </div>
               <div class="content">
                 <%=h reply.content %>
-                <%= render 'cheer', :post => reply if logged_in? %>
+                <%= render 'cheer', :post => reply %>
               </div>
             </div>
           <% end %>
