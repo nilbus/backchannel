@@ -30,5 +30,6 @@ function cheer(link) {
   }
 }
 
-// $(document).ready();
-
+$(document).ready(function() {
+  $('.autofocus').get()[0].focus();
+});

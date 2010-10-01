@@ -21,7 +21,7 @@ h1 { font-size: 20px; }
 h2 { font-size: 26px; }
 h2 a { text-decoration: none; }
 
-input[type=text] {
+.column input[type=text] {
   width: 500px;
 }
 
