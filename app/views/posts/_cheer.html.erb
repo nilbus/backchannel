@@ -1,8 +1,11 @@
-<div class="cheer">
+<% if current_user.try :is_admin? %>
+  <div class="icon"><%= link_to image_tag('../images/trash_can.png'), post_path(post), :method => :delete, :confirm => "This post and all of its replies will be deleted!", :title => 'delete post' %></div>
+<% end %>
+<div class="icon">
   <span class="cheer-counter <%= 'cheered' if logged_in? && post.cheered_by?(current_user) %>"><%= post.cheers.size %></span>
   <% if logged_in? and current_user.id != post.user_id %>
-    <%= link_to_function image_tag('heart.svg'), 'cheer(this)', :title => 'cheer this post' %>
+    <%= link_to_function image_tag('../images/heart.png'), 'cheer(this)', :title => 'cheer this post' %>
   <% else %>
-    <%= image_tag('heart.svg') %>
+    <%= image_tag('../images/heart.png', :title => (logged_in? ? "we know you think you're awesome, but you can't cheer your own post" : '')) %>
   <% end %>
 </div>

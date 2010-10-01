@@ -18,7 +18,7 @@ a {
 }
 
 h1 { font-size: 20px; }
-h2 { font-size: 26px; }
+h2 { font-size: 2em; }
 h2 a { text-decoration: none; }
 
 .column input[type=text] {
@@ -33,18 +33,20 @@ h2 a { text-decoration: none; }
 
 .column {
   float: left;
+  margin-right: 10px;
 }
 
 .post {
   background: #700;
   border: 1px solid black;
   border-radius: 15px;
+  -moz-border-radius: 15px;
   padding: 10px;
   margin: 10px 0 10px;
   width: 500px;
 }
 
-.post .user {
+.post .user_name {
   float: left;
   font-size: 90%;
   font-weight: bold;
@@ -60,8 +62,35 @@ h2 a { text-decoration: none; }
   width: 100%;
 }
 
-a#add_post {
+ul.users {
+  list-style: none;
+  padding: 0;
+}
+
+ul.users li {
+  background: #700;
+  border: 1px solid black;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  padding: 10px;
+  margin: 10px 0 10px;
+  width: 500px;
+}
+
+ul.users li .user_name {
+  float: left;
+  font-size: 90%;
+  font-weight: bold;
+  margin: 2px 5px -2px 0;
+}
+
+ul.users li>a {
+  clear: both;
   display: block;
+  font-size: 80%;
+  font-weight: bold;
+  margin-left: 10px;
+  width: 100%;
 }
 
 .reply {
@@ -69,17 +98,17 @@ a#add_post {
   width: 480px;
 }
 
-.cheer {
-  text-align: center;
-  margin: 5px 5px 0 0;
+.icon {
   float: right;
+  text-align: right;
+  min-width: 2.5em;
 }
 
-.cheer .cheered {
+.icon .cheered {
   color: yellow;
 }
 
-.cheer img {
+.icon img {
   border: 0;
   height: 1em;
   width: 1em;
@@ -91,4 +120,8 @@ a#add_post {
 
 .search input {
   width: 250px;
+}
+
+strong {
+  font-size: 1.25em;
 }

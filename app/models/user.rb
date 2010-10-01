@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   has_many :cheers, :dependent => :destroy
-  has_many :posts, :dependent => :destroy
+  has_many :posts, :include => :cheers, :dependent => :destroy
 
   include Authentication
   include Authentication::ByPassword
@@ -23,7 +23,13 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
+  def self.by_cheers
+    User.all(:include => :cheers).sort_by{|u| -u.incoming_cheers}
+  end
 
+  def incoming_cheers
+    posts.map{|p| p.cheers.count}.sum
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.roots.newest_first.with_cheers
+    @users = User.by_cheers
   end
 
   def create

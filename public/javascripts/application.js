@@ -31,5 +31,7 @@ function cheer(link) {
 }
 
 $(document).ready(function() {
-  $('.autofocus').get()[0].focus();
+  var focus_field = $('.autofocus').get()[0];
+  if (focus_field)
+    focus_field.focus();
 });
