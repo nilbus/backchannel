@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    unless User.find_by_id(params[:id]).try :destroy
+    unless current_user.try :is_admin? and User.find_by_id(params[:id]).try :destroy
       flash[:error] = "I guess you can't do that"
     end
     redirect_to '/'
