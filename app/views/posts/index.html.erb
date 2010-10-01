@@ -79,7 +79,7 @@
     <ul class="users">
       <% @users.each do |user| %>
         <li>&nbsp;
-          <div class="icon"><%= link_to image_tag('../images/trash_can.png'), user_path(user), :method => :delete, :confirm => "This user will be deleted along with all their posts and those posts' replies!", :title => 'delete user' %></div>
+          <div class="icon" title="delete user"><%= link_to image_tag('../images/trash_can.png'), user_path(user), :method => :delete, :confirm => "This user will be deleted along with all their posts and those posts' replies!" %></div>
           <div class="user_name"><%= user.name %></div>
           <% if user.is_admin? %>
             <div class="icon" title="demote"><%= link_to image_tag('../images/pawn.png'), demote_user_path(user), :method => :put, :confirm => "This will strip #{user.name} of all admin rights." %></div>
