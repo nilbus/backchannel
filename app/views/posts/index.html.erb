@@ -29,7 +29,7 @@
       <div class="replies">
         <% unless @searching %>
           <% post.replies.each do |reply| %>
-            <div class="post reply">
+            <div class="post reply" id="<%= reply.id %>">
               <div class="user">
                 <%=h reply.user.try :name %>
               </div>
