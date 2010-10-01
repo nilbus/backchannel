@@ -8,13 +8,16 @@ function reply(add_post) {
 
 function cheer(link) {
   link = $(link);
-  var cheer_count = link.siblings('.cheer-count').first();
-  var cheered = cheer_count.hasClass('cheered');
+  var cheer_counter = link.siblings('.cheer-counter').first();
+  var cheer_count = parseInt(cheer_counter.html());
+  var cheered = cheer_counter.hasClass('cheered');
   if (cheered) {
-    cheer_count.removeClass('cheered');
     // ajax uncheer
+    cheer_counter.removeClass('cheered');
+    cheer_counter.html(cheer_count - 1);
   } else {
-    cheer_count.addClass('cheered');
+    cheer_counter.addClass('cheered');
+    cheer_counter.html(cheer_count + 1);
     // ajax cheer
   }
 }
