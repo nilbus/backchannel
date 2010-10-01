@@ -28,4 +28,18 @@ class UsersController < ApplicationController
     end
     redirect_to '/'
   end
+
+  def promote
+    unless current_user.try :is_admin? and User.find_by_id(params[:id]).update_attribute :admin, true
+      flash[:error] = "I guess you can't do that"
+    end
+    redirect_to '/'
+  end
+
+  def demote
+    unless current_user.try :is_admin? and User.find_by_id(params[:id]).update_attribute :admin, false
+      flash[:error] = "I guess you can't do that"
+    end
+    redirect_to '/'
+  end
 end

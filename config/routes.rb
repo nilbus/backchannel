@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users
+  map.resources :users, :member => { :promote => :put, :demote => :put }
   map.resource :session
   map.resources :posts, :collection => { :search => :get } do |post|
     post.resources :cheers, :only => [:create, :destroy]
