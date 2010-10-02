@@ -1,0 +1,45 @@
+Program 1: Backchannel app
+==========================
+
+1. This semester, as you know, we’re employing a backchannel during class in CSC/ECE 517.  However, as a backchannel, Twitter has some important limitations.
+2. You can’t search for posts by new people for a few days after they sign up.
+3. There’s no way to identify oneself unless you have your own (public) Twitter account.
+4. There’s no easy way to figure out how many posts an individual has done; you have to aggregate the results and use external software.
+5. There’s no rating system for posts.
+6. There’s no threading; all replies appear in the same linear stream.
+7. Account administration is up to Twitter, not up to us.  We have no defense against spam to @csc517.
+
+Using Ruby on Rails, we will create an app to address these shortcomings.
+
+Features
+========
+
+1. Anyone can create an account by filling out a form that comes up on the homepage of the app.
+2. Any user with an account can post.
+3. Anyone (account or not) can search by user or content, by using the Search box on the homepage.
+4. Any logged-in user can “cheer” (or “uncheer”) any post.
+     *  The system maintains a count of cheers for each post.
+     *  When the system displays a post, next to the post should be the number of cheers.
+     *  You cannot cheer your own posts.
+     *  Cheer UI should look good for both logged in and non-logged in users.
+5. Any logged-in user can reply to a post (but not to a reply; i.e., only to a depth of 1).
+     *  A user can also cheer a reply (by someone else).
+6. If a user logs in as an admin, (s)he sees a different interface from what non-admins see.
+     *  Administrators can create other admin accounts.
+     *  Administrators can delete posts or users
+     *  View reports on post activity, including number of cheers for each post such that it is possible to use this report to assign grades.
+
+Tables
+======
+
+Tables must not be created directly in SQLite. Instead, you must use the db:migrate functionality of rails to create your database tables. Recall that Rails creates three versions of each db: Production, testing, and development.  You should have a test target that populates the database with sufficient sample data to allow for testing. You should also have a production target that initializes the database in an empty state. The use of the development target is left up to you (you don’t have to submit one).
+
+We expect your application to have at least the following tables:
+users
+posts
+cheers (this is a join table between users and posts)
+
+Testing
+=======
+
+You must submit unit tests for all classes.  The tests must cover all important branches of the code.  You may use Test::Unit or, for extra credit, RSpec.  If you use one of the GUI testing frameworks (such as Webrat) covered in Lecture 9, you will receive 10% extra credit.
