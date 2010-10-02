@@ -5,11 +5,12 @@ class PostsController < ApplicationController
   end
 
   def create
+    redirect_to posts_path
+
+    return unless logged_in?
     @post = Post.new params[:post]
     @post.user = current_user
     @post.save
-
-    redirect_to posts_path
   end
 
   def destroy
