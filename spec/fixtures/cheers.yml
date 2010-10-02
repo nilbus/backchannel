@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  user_id: 1
-  post_id: 1
+cheer_1:
+  user: vino
+  post: nilbus_reply
 
-two:
-  user_id: 1
-  post_id: 1
+cheer_2:
+  user: vino
+  post: nilbus_welcome
+
+cheer_3:
+  user: nilbus
+  post: vino_hi

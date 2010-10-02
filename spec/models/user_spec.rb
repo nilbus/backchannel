@@ -7,7 +7,24 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe User do
   include AuthenticatedTestHelper
-  fixtures :users
+  fixtures :all
+
+  describe 'being admin:' do
+    it 'should recognize an admin' do
+      users(:admin).should be_admin
+    end
+  end
+
+  describe 'having cheers:' do
+    it 'counts incoming cheers' do
+      users(:nilbus).incoming_cheers.should eql(2)
+    end
+
+    it 'sorts in order of who has the most cheers' do
+      User.by_cheers[0].should eql(users(:nilbus))
+      User.by_cheers[1].should eql(users(:vino))
+    end
+  end
 
   describe 'being created' do
     before do

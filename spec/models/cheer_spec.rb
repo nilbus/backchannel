@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe Cheer do
+  fixtures :all
+
   before(:each) do
     @valid_attributes = {
-      :user_id => 1,
-      :post_id => 1
+      :user_id => users(:nilbus).id,
+      :post_id => posts(:nilbus_welcome).id
     }
   end
 

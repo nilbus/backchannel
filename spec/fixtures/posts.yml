@@ -1,9 +1,23 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+nilbus_welcome:
+  content: "Welcome to the board!"
+  user: nilbus
+  parent: nil
+  created_at: <%= Date.today - 10.minutes %>
 
-one:
-  content: MyString
-  user_id: 1
+nilbus_reply:
+  content: "You can reply like this"
+  user: nilbus
+  parent: nilbus_welcome
+  created_at: <%= Date.today - 9.minutes %>
 
-two:
-  content: MyString
-  user_id: 1
+admin_mine:
+  content: "This is my board"
+  user: admin
+  parent: nil
+  created_at: <%= Date.today - 8.minutes %>
+
+vino_hi:
+  content: "Hi all"
+  user: vino
+  parent: nil
+  created_at: <%= Date.today - 7.minutes %>
