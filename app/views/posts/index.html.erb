@@ -82,9 +82,9 @@
           <div class="icon" title="delete user"><%= link_to image_tag('../images/trash_can.png'), user_path(user), :method => :delete, :confirm => "This user will be deleted along with all their posts and those posts' replies!" %></div>
           <div class="user_name"><%= user.name %></div>
           <% if user.is_admin? %>
-            <div class="icon" title="demote"><%= link_to image_tag('../images/pawn.png'), demote_user_path(user), :method => :put, :confirm => "This will strip #{user.name} of all admin rights." %></div>
+            <div class="icon" title="demote"><%= link_to image_tag('../images/queen.png'), demote_user_path(user), :method => :put, :confirm => "This will strip #{user.name} of all admin rights." %></div>
           <% else %>
-            <div class="icon" title="promote to admin"><%= link_to image_tag('../images/queen.png'), promote_user_path(user), :method => :put, :confirm => "This will give #{user.name} all the admin rights you have." %></div>
+            <div class="icon" title="promote to admin"><%= link_to image_tag('../images/pawn.png'), promote_user_path(user), :method => :put, :confirm => "This will give #{user.name} all the admin rights you have." %></div>
           <% end %>
           <div class="icon" title="number of posts"><%= "#{user.posts.size} #{image_tag('../images/post.png')}" %></div>
           <div class="icon" title="times cheered by others"><%= "#{user.incoming_cheers} #{image_tag('../images/heart.png')}" %></div>
